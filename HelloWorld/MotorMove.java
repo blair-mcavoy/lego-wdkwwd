@@ -8,6 +8,14 @@ public class MotorMove
     {
         LCD.drawString("Program 1", 0,0);
         Button.waitForAnyPress();
-        Motor.A.forward();
+        Motor.B.setSpeed(720);
+        Motor.B.forward();
+        Button.waitForAnyPress();
+        LCD.drawString("Forward",0,0);
+        Button.waitForAnyPress();
+        Motor.B.backward();
+        LCD.drawString("BACKWARD",0,0);
+        Button.waitForAnyPress();
+        Motor.B.stop();
     }
 }
