@@ -15,7 +15,7 @@ public class CompassPilotTst
     {
         System.out.println("CompassPilot Test");
         Button.waitForAnyPress();
-        CompassHTSensor compass = new CompassHTSensor(SensorPort.S3);
+        CompassHTSensor compass = new CompassHTSensor(SensorPort.S2);
         CompassPilot pilot = new CompassPilot(compass, 2.25f, 4.8f, Motor.B, Motor.C);
         pilot.calibrate();
         LCD.drawInt((int) pilot.getHeading(), 4, 0, 0);
