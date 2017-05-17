@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ObstacleCourse()
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=aSource\ aOldValue\ aNewValue
+comment2.target=void\ stateChanged(lejos.nxt.SensorPort,\ int,\ int)
+comment3.params=feature\ detector
+comment3.target=void\ featureDetected(lejos.robotics.objectdetection.Feature,\ lejos.robotics.objectdetection.FeatureDetector)
+numComments=4
