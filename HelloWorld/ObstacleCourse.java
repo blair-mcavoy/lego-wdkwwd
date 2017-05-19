@@ -1,6 +1,7 @@
 import lejos.nxt.*;
 import lejos.robotics.objectdetection.*;
 import lejos.robotics.navigation.DifferentialPilot;
+
 /**
  * Write a description of class ObstacleCourse here.
  * 
@@ -20,14 +21,11 @@ public class ObstacleCourse implements SensorPortListener, FeatureListener
     public static void main(String[] args)
     {
         ObstacleCourse c = new ObstacleCourse();
-        TouchSensor touch = new TouchSensor(SensorPort.S3);
-       // while (touch.isPressed())
-       // {
-       //     touchSensor();
-        //}
+        
+   
         SensorPort.S2.addSensorPortListener(c);
-        
-        
+        SensorPort.S3.addSensorPortListener(c);
+            
         UltrasonicSensor us = new UltrasonicSensor(SensorPort.S1);
         RangeFeatureDetector fd = new RangeFeatureDetector(us, 80, 500);
 
@@ -41,6 +39,8 @@ public class ObstacleCourse implements SensorPortListener, FeatureListener
 
     public void stateChanged(SensorPort aSource,int aOldValue,int aNewValue)  
     {
+        if (aSource == SensorPort.S2)
+        {
         LightSensor light = new LightSensor(SensorPort.S2);
         LCD.drawInt(light.getLightValue(), 4, 0, 0);
         LCD.drawInt(light.getNormalizedLightValue(), 4, 0, 1);
@@ -51,6 +51,17 @@ public class ObstacleCourse implements SensorPortListener, FeatureListener
             pilot.rotate(90);
             pilot.forward();
         }
+      }
+       else if (aSource == SensorPort.S3)
+       {   TouchSensor touch = new TouchSensor(SensorPort.S3);
+           if (touch.isPressed())
+           {
+             pilot.travel(-10);
+             pilot.rotate(90);
+             pilot.forward(); 
+            
+           } 
+       }
     }
 
     public void featureDetected(Feature feature, FeatureDetector detector) {
